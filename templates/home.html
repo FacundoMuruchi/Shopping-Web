@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block latest %}
+<div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{% static "assets/imagen1.jpg" %}" alt="..." /></div>
+<div class="col-md-6">
+    <div class="small mb-1">Cups</div>
+    <h1 class="display-5 fw-bolder">Coffee Cup</h1>
+    <div class="fs-5 mb-5">
+        <span class="text-decoration-line-through">$45.00</span>
+        <span>$40.00</span>
+    </div>
+    <p class="lead">
+        Dive into a world of rich aromas and flavors with our premium coffee mug. 
+        Each sip is a sensory journey, warming your soul. 
+        With an elegant design, it's more than a vessel – it's a style statement. 
+        Let the coffee flow, awakening your mornings with unparalleled delight. 
+        Elevate your coffee ritual with our mug, turning every moment into a celebration of aromatic pleasure. 
+        Discover the magic in every sip!</p>
+    <div class="d-flex">
+        <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+        <button class="btn btn-outline-dark flex-shrink-0" type="button">
+            <i class="bi-cart-fill me-1"></i>
+            Add to cart
+        </button>
+    </div>
+</div>
+{% endblock latest %}
