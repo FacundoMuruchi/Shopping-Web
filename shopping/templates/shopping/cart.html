@@ -2,8 +2,32 @@
 
 {% block active %}
 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-    <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url "home" %}">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url "home" %}">Home</a></li>
     <li class="nav-item"><a class="nav-link" href="{% url "about" %}">About</a></li>
     <li class="nav-item"><a class="nav-link" href="{% url "shop" %}">Shop</a></li>
 </ul>
 {% endblock active %}
+
+{% block heading %}
+<div class="container px-4 px-lg-5 mt-5">
+    <h2 class="fw-bolder mb-4">My Cart</h2>
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <table>
+            <thead>
+                <tr>
+                    <th>columna</th>
+                    <th>columna</th>
+                    <th>columna</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>fila</td>
+                    <td>fila</td>
+                    <td>fila</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock heading %}

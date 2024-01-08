@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
+from .forms import PostForm
 
 # Create your views here.
 
@@ -23,3 +26,14 @@ class PostDetailView(DetailView):
         # Agrega los productos relacionados a la variable 'object_list'
         context['object_list'] = Post.objects.exclude(pk=self.object.pk)[:4]
         return context
+    
+class PostCreateView(CreateView):
+        model = Post
+        fields = ['title', 'desc', 'img', 'price']
+        template_name = 'shopping/upload.html'
+        success_url = reverse_lazy('shop')
+
+        def form_valid(self, form):
+            """If the form is valid, save the associated model."""
+            form.instance.creator = self.request.user
+            return super().form_valid(form)
