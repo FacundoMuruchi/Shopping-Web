@@ -12,9 +12,9 @@
 <div class="row gx-4 gx-lg-5 align-items-center">
     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{% static "assets/upload.jpg" %}" alt="..." /></div>
     <div class="col-md-6">
-        <h1 class="display-5 fw-bolder">Upload </h1>
+        <h1 class="display-5 fw-bolder">Sign Up</h1>
         <div class="fs-5 mb-5">
-            <span>Eco-Friendly Handcrafts</span>
+            <span>Create your account!</span>
         </div>
         <p class="lead">
             Crafting Green, Living Clean
@@ -30,7 +30,6 @@
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-2 row-cols-xl justify-content-center">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.media }}
                 {{ form.as_p }}
                 <input type="submit">
             </form>

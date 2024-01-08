@@ -22,23 +22,31 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     {% block active %}{% endblock active %}
-                    <form class="d-flex">
-                        <a class="btn btn-outline-light" type="submit" href="{% url "cart" %}">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="bi-fill me-1">0</span>
-                        </a>
-                    </form>
-                    <div class="dropdown">
-                        <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Profile
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="">Account</a></li>
-                            <li><a class="dropdown-item" href="">Edit</a></li>
-                            <li><a class="dropdown-item" href="">Log Out</a></li>
-                        </ul>
-                    </div>
+                    {% if user.is_authenticated %}
+                        <div class="dropdown">
+                            <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Profile
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url "account" %}">Account</a></li>
+                                <li><a class="dropdown-item" href="{% url "upload" %}">Upload</a></li>
+                                <form action="{% url 'logout' %}" method="post">
+                                    {% csrf_token %}
+                                    <li><button type="submit" class="dropdown-item">Log Out</button></li>
+                                </form>
+                            </ul>
+                        </div>
+                        <form class="d-flex">
+                            <a class="btn btn-outline-light" type="submit" href="{% url "cart" %}">
+                                <i class="bi-cart-fill me-1"></i>
+                                Cart
+                                <span class="bi-fill me-1">0</span>
+                            </a>
+                        </form>
+                    {% else %}
+                        <a class="btn btn-success" href="{% url "signup" %}">Sign Up</a>
+                        <a class="btn btn-success" href="{% url "login" %}">Log In</a>
+                    {% endif %}
                 </div>
             </div>
         </nav>

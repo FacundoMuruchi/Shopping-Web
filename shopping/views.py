@@ -3,7 +3,8 @@ from django.urls import reverse_lazy
 
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
-from .forms import PostForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 # Create your views here.
 
@@ -27,7 +28,7 @@ class PostDetailView(DetailView):
         context['object_list'] = Post.objects.exclude(pk=self.object.pk)[:4]
         return context
     
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin,CreateView):
         model = Post
         fields = ['title', 'desc', 'img', 'price']
         template_name = 'shopping/upload.html'
